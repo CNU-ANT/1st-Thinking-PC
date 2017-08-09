@@ -7,7 +7,7 @@
 #include <vector>
 using namespace std;
 
-
+/*
 int solveLinear(const vector<int> &h) {
 	if (h.empty()) return 0;
 	int ans = 0;
@@ -28,6 +28,7 @@ int solveLinear(const vector<int> &h) {
 
 	return ans;
 }
+*/
 /*
 int solveQuadratic(vector<int> h) {
 	reverse(h.begin(), h.end());
@@ -50,6 +51,20 @@ int solveQuadratic(vector<int> h) {
 	return ans;
 }
 */
+int solve(vector<int> h) {
+	reverse(h.begin(), h.end());
+
+	int ans = 0;
+	int maxval = -123;
+	for (int a : h) {
+		if (maxval < a)
+			maxval = a;
+		else
+			ans += maxval - a;
+	}
+
+	return ans;
+}
 
 
 int H, W;
@@ -90,7 +105,7 @@ int main() {
 	vector<int> right;
 	for (int i=R+1; i<=W; i++) right.push_back(h[i]);
 
-	ans += solveLinear(left) + solveLinear(right);
+	ans += solve(left) + solve(right);
 	printf("%d\n", ans);
 
 	return 0;

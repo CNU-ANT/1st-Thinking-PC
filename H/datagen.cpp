@@ -49,6 +49,20 @@ int solveQuadratic(vector<int> h) {
 	}
 	return ans;
 }
+int solve(vector<int> h) {
+	reverse(h.begin(), h.end());
+
+	int ans = 0;
+	int maxval = -123;
+	for (int a : h) {
+		if (maxval < a)
+			maxval = a;
+		else
+			ans += maxval - a;
+	}
+
+	return ans;
+}
 
 void createData(string filename) {
 	static int H, W;
@@ -91,17 +105,20 @@ void createData(string filename) {
 	ans += solveLinear(left) + solveLinear(right);
 
 	assert(solveLinear(left) == solveQuadratic(left));
+	assert(solveLinear(left) == solve(left));
 	assert(solveLinear(right) == solveQuadratic(right));
+	assert(solveLinear(right) == solve(right));
 
 
-
+/*
 	FILE* in = fopen((filename + ".in").data(), "w");
 	fprintf(in, "%d %d\n", H, W);
 	for (int i=1; i<=W; i++) fprintf(in, "%d ", h[i]);
 	fprintf(in, "\n");
-	
+
 	FILE* out = fopen((filename + ".out").data(), "w");
 	fprintf(out, "%d\n", ans);
+	*/
 }
 
 
