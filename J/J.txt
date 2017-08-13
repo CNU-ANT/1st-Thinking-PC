@@ -9,11 +9,11 @@
 
 현종이는 우선 집 근처에 작은 개미굴에 로봇 개미 N개를 넣어봤다.
 다음은 4개의 로봇 개미를 넣었을 때 로봇 개미들이 보내준 개미굴 정보다. 
-KIWI / BANANA
-KIWI / APPLE
-APPLE / APPLE
-APPLE / BANANA / KIWI
-('/'를 기준으로 왼쪽이 먼저 보내진 개미굴 구조 정보다. 순서가 같으면 같은 깊이에 있다고 생각하기로 했다.) 
+KIWI BANANA
+KIWI APPLE
+APPLE APPLE
+APPLE BANANA KIWI
+(' '(공백)을 기준으로 왼쪽이 먼저 보내진 개미굴 구조 정보다. 순서가 같으면 같은 깊이에 있다고 생각하기로 했다.) 
 이 정보를 가지고 다음과 같이 개미굴의 모양을 시각화하면 다음과 같다. 
 
  (그림)
@@ -32,7 +32,7 @@ KIWI
  
 입력:
 N: 로봇 개미의 수 
-/ 를 기준으로 왼쪽이 오른쪽보다 먼저 온 정보다.
+공백을 기준으로 왼쪽이 오른쪽보다 먼저 온 정보다.
 
 출력:
 하위 경로일 경우 -- 를 붙인다.
@@ -41,9 +41,9 @@ N: 로봇 개미의 수
 
 예제 입력:
 3
-B / A
-A / B / C / D
-A / C
+2 B A
+4 A B C D
+2 A C
 예제 출력:
 A
 --B
@@ -54,11 +54,11 @@ B
 --A
 
 예제 입력:
-3
-KIWI / BANANA
-KIWI / APPLE
-APPLE / APPLE
-APPLE / BANANA / KIWI
+4
+2 KIWI / BANANA
+2 KIWI / APPLE
+2 APPLE / APPLE
+3 APPLE / BANANA / KIWI
 
 예제 출력:
 APPLE
