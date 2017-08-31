@@ -1,3 +1,5 @@
+분류: Flood Fill, DFS, BFS
+
 ANT
 
 ANT가 처음 알고리즘 대회를 개최하게 되면서 현수막을 내걸었다. 

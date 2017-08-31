@@ -1,3 +1,5 @@
+분류: Simulation, Mathematic
+
 과제
 
 영학이는 이산수학 강의를 듣는다.

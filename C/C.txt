@@ -1,3 +1,5 @@
+분류: Brute Force, Linear Regression, Simulation, Mathematic
+
 성적표
 
 영학이는 이번 학기에도 F 학점을 받아 학사경고를 받았다.
