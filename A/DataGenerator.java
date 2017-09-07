@@ -12,8 +12,8 @@ public class DataGenerator {
 	public static void main(String... args) throws Exception {
 		for (int i = 1; i <= 50; i++) {
 			COUNT = i;
-			Y = randomNumber(1, i * 20);
-			X = randomNumber(1, i * 20);
+			Y = randomNumber(1, i * 5);
+			X = randomNumber(1, i * 5);
 			input = new boolean[Y][X];
 			generate();
 			//print();
@@ -74,6 +74,14 @@ public class DataGenerator {
 			dfs(y, x - 1);
 		if (x + 1 < X && !visited[y][x + 1] && input[y][x + 1])
 			dfs(y, x + 1);
+		if (y - 1 >= 0 && x - 1 >= 0 && !visited[y - 1][x - 1] && input[y - 1][x - 1])
+			dfs(y - 1, x - 1);
+		if (y - 1 >= 0 && x + 1 < X && !visited[y - 1][x + 1] && input[y - 1][x + 1])
+			dfs(y - 1, x + 1);
+		if (y + 1 < Y && x - 1 >= 0 && !visited[y + 1][x - 1] && input[y + 1][x - 1])
+			dfs(y + 1, x - 1);
+		if (y + 1 < Y && x + 1 < X && !visited[y + 1][x + 1] && input[y + 1][x + 1])
+			dfs(y + 1, x + 1);
 	}
 
 	private static int randomNumber(int first, int second) {
