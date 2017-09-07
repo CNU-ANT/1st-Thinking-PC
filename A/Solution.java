@@ -44,9 +44,9 @@ public class Solution {
 			dfs(y - 1, x - 1);
 		if (y - 1 >= 0 && x + 1 < X && !visited[y - 1][x + 1] && graph[y - 1][x + 1])
 			dfs(y - 1, x + 1);
-		if (y + 1 <= Y && x - 1 < X && !visited[y + 1][x - 1] && graph[y + 1][x - 1])
+		if (y + 1 < Y && x - 1 >= 0 && !visited[y + 1][x - 1] && graph[y + 1][x - 1])
 			dfs(y + 1, x - 1);
-		if (y + 1 <= Y && x + 1 < X && !visited[y + 1][x + 1] && graph[y + 1][x + 1])
+		if (y + 1 < Y && x + 1 < X && !visited[y + 1][x + 1] && graph[y + 1][x + 1])
 			dfs(y + 1, x + 1);
 	}
 }
