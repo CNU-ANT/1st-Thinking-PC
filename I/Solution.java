@@ -6,20 +6,20 @@ public class Solution {
 		String[] club = new String[] { "PROBRAIN", "GROW", "ARGOS", "ADMIN", "ANT", "MOTION", "SPG", "COMON", "ALMIGHTY" };
 		int N = input.nextInt();
 
-		int[] maxAge = new int[9];
+		int[] maxScore = new int[9];
 		for (int i = 0; i < 9; i++) {
 			int max = 0;
 			for (int j = 0; j < N; j++)
 				max = Math.max(max, input.nextInt());
-			maxAge[i] = max;
+			maxScore[i] = max;
 		}
 
 		int answer = 0;
-		int min = Integer.MAX_VALUE;
+		int max = 0;
 		for (int i = 0; i < 9; i++)
-			if (min > maxAge[i]) {
+			if (max < maxScore[i]) {
 				answer = i;
-				min = maxAge[i];
+				max = maxScore[i];
 			}
 
 		System.out.print(club[answer]);
