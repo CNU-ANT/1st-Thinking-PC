@@ -7,60 +7,67 @@
 #include <algorithm>
 #include <vector>
 using namespace std;
+typedef long long ll;
+const int SZ = 103;
 
-const int SZ = 100;
+int N;
+int x[SZ], y[SZ];
+ll Sx, Sxx, Sy, Syy, Sxy;
 
-
-
-int N, K;
-
-struct Point {
-	int x, y, z;
-	bool operator<(const Point rhs) const {
-		return z < rhs.z;
+void prepare() {
+	Sx = Sxx = Sy = Syy = Sxy = 0;
+	for (int i=0; i<N; i++) {
+		Sx += x[i];
+		Sxx += x[i] * x[i];
+		Sy += y[i];
+		Syy += y[i] * y[i];
+		Sxy += x[i] * y[i];
 	}
-} p[SZ];
+}
+ll error1(int a, int b) {
+	return a * a * Sxx
+		+ b * b * N
+		+ Syy
+		- 2 * a * Sxy
+		- 2 * b * Sy
+		+ 2 * a * b * Sx;
+}
+/*
+ll sqr(ll x) { return x * x; }
+ll error2(int a, int b) {
+ll S = 0;
+for (int i=0; i<N; i++)
+S += sqr(a*x[i] + b - y[i]);
+return S;
+}
+*/
+
+
 
 int main() {
-	scanf("%d%d", &N, &K);
-	assert(1 <= N && N <= SZ);
-	assert(1 <= K && K <= N);
-
+	scanf("%d", &N); assert(2 <= N && N <= 100);
 	for (int i=0; i<N; i++) {
-		int x, y, z; scanf("%d%d%d", &x, &y, &z);
-		assert(0 <= x && x <= 1000000);
-		assert(0 <= y && y <= 1000000);
-		assert(0 <= z && z <= 1000000);
-		p[i] ={ x, y, z };
+		scanf("%d%d", &x[i], &y[i]);
+		assert(1 <= x[i] && x[i] <= 1000);
+		assert(1 <= y[i] && y[i] <= 1000);
 	}
 
-	vector<int> xCoord, yCoord;
-	for (int i=0; i<N; i++) {
-		xCoord.push_back(p[i].x);
-		yCoord.push_back(p[i].y);
-	}
-
-
-	sort(p, p + N);
-	int ans = 1e9;
-
-	for (int x : xCoord) for (int y : yCoord) {
-		int z = 0;
-		int cnt = 0;
-		for (int i=0; i<N; i++) if (p[i].x <= x && p[i].y <= y) {
-			cnt++;
-			z = p[i].z;
-			if (cnt == K) break;
+	prepare();
+	int ma = 1, mb = 1;
+	ll minError = error1(1, 1);
+	for (int a=1; a<=100; a++) for (int b=1; b<=100; b++) {
+		if (minError > error1(a, b)) {
+			minError = error1(a, b);
+			ma = a;
+			mb = b;
 		}
-
-		if (cnt == K)
-			ans = min(ans, x + y + z);
 	}
 
+	for (int a=1; a<=100; a++) for (int b=1; b<=100; b++)
+		if (!(a==ma && b==mb))
+			assert(minError != error1(a, b));
 
-
-
-	printf("%d\n", ans);
+	printf("%d %d\n", ma, mb);
 
 	return 0;
 }

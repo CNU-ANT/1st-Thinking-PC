@@ -7,114 +7,79 @@
 #include <algorithm>
 #include <vector>
 using namespace std;
-typedef long long ll;
-const int SZ = 103;
-const int A = 100;
-const int B = 100;
 
-int N;
-int x[SZ], y[SZ];
-ll Sx, Sxx, Sy, Syy, Sxy;
+const int SZ = 100;
+int N, K;
 
-void prepare() {
-	Sx = Sxx = Sy = Syy = Sxy = 0;
+struct Point {
+	int x, y, z;
+	bool operator<(const Point rhs) const {
+		return z < rhs.z;
+	}
+} p[SZ];
+
+
+void createData(string filename) {
+	N = 1 + rand() % SZ;
+	K = 1 + rand() % N;
+	assert(1 <= N && N <= SZ);
+	assert(1 <= K && K <= N);
+
 	for (int i=0; i<N; i++) {
-		Sx += x[i];
-		Sxx += x[i] * x[i];
-		Sy += y[i];
-		Syy += y[i] * y[i];
-		Sxy += x[i] * y[i];
+		int x = rand() * rand() % 1000001;
+		int y = rand() * rand() % 1000001;
+		int z = rand() * rand() % 1000001;
+		assert(0 <= x && x <= 1000000);
+		assert(0 <= y && y <= 1000000);
+		assert(0 <= z && z <= 1000000);
+		p[i] ={ x, y, z };
 	}
-}
-ll error1(ll a, ll b) {
-	return a * a * Sxx
-		+ b * b * N
-		+ Syy
-		- 2 * a * Sxy
-		- 2 * b * Sy
-		+ 2 * a * b * Sx;
-}
-ll sqr(ll x) { return x * x; }
-ll error2(ll a, ll b) {
-	ll S = 0;
-	for (int i=0; i<N; i++)
-		S += sqr(a*x[i] + b - y[i]);
-	return S;
-}
-
-
-
-bool createData(string filename) {
-	if (rand()&1)
-		N = 2 + rand() % 10;
-	else
-		N = 2 + rand() % 90;
-
-	if (rand()&1) {
-		for (int i=0; i<N; i++) {
-			x[i] = 1 + rand() % 30;
-			y[i] = 1 + x[i] * (rand() % 20) + rand() % 10;
-		}
-	}
-	else {
-		for (int i=0; i<N; i++) {
-			x[i] = 1 + rand() % 10;
-			y[i] = 1 + x[i] * (rand() % 80) + rand() % 100;
-		}
-	}
-
-
-	assert(2 <= N && N <= 100);
-	for (int i=0; i<N; i++) {
-		assert(1 <= x[i] && x[i] <= 1000);
-		assert(1 <= y[i] && y[i] <= 1000);
-	}
-
-	prepare();
-	int ma = 1, mb = 1;
-	ll minError = error1(1, 1);
-	for (int a=1; a<=A; a++) for (int b=1; b<=B; b++) {
-		assert(error1(a, b) == error2(a, b));
-		if (minError > error1(a, b)) {
-			minError = error1(a, b);
-			ma = a;
-			mb = b;
-		}
-	}
-
-	for (int a=1; a<=A; a++) for (int b=1; b<=B; b++) if (!(a==ma && b==mb)) {
-		//assert(minError != error1(a, b));
-		if (minError == error1(a, b)) {
-			puts("error!");
-			return false;
-		}
-	}
-
-
 
 	FILE* in = fopen((filename + ".in").data(), "w");
-	fprintf(in, "%d\n", N);
-	for (int i=0; i<N; i++)
-		fprintf(in, "%d %d\n", x[i], y[i]);
+	fprintf(in, "%d %d\n", N, K);
+	for (int i=0; i<N; i++) fprintf(in, "%d %d %d\n", p[i].x, p[i].y, p[i].z);
+
+
+
+
+	vector<int> xCoord, yCoord;
+	for (int i=0; i<N; i++) {
+		xCoord.push_back(p[i].x);
+		yCoord.push_back(p[i].y);
+	}
+
+	sort(p, p + N);
+	int ans = 1e9;
+
+	for (int x : xCoord) for (int y : yCoord) {
+		int z = 0;
+		int cnt = 0;
+		for (int i=0; i<N; i++) if (p[i].x <= x && p[i].y <= y) {
+			cnt++;
+			z = p[i].z;
+			if (cnt == K) break;
+		}
+
+		if (cnt == K)
+			ans = min(ans, x + y + z);
+	}
+
+
 
 	FILE* out = fopen((filename + ".out").data(), "w");
-	fprintf(out, "%d %d\n", ma, mb);
+	fprintf(out, "%d\n", ans);
 
-	printf("created data %d %d %d\n", N, ma, mb);
-
-	return true;
+	printf("%d %d %d\n", N, K, ans);
 }
-
-
 
 int main() {
 	srand(time(NULL));
 	for (int i=1; i<=50; i++) {
 		char tmp[123];
 		itoa(i, tmp, 10);
-		while (!createData(tmp));
+		createData(tmp);
+		printf("created data %d\n", i);
 	}
-
 
 	return 0;
 }

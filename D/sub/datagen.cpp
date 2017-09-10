@@ -9,51 +9,116 @@
 using namespace std;
 
 
+int solveLinear(const vector<int> &h) {
+	if (h.empty()) return 0;
+	int ans = 0;
 
-pair<int, int> solve1(int N) {
-	N--;
-	int g = (-1 + sqrt(1+8*N)) / 2;
-	int M = g * (g + 1) / 2;
-	int dif = N - M;
-	int a = g + 1 - dif;
-	int b = 1 + dif;
+	vector<pair<int, int>> st;
+	st.push_back(make_pair(1e9, -123));
 
-	//printf("1: %d %d\n", a, b);
-	return make_pair(a, b);
-}
-pair<int, int> solveN(int N) {
-	int a = 1;
-	int b = 1;
-	for (int z=0; z<N-1; z++) {
-		if (a == 1) {
-			a = b + 1;
-			b = 1;
+	for (int a : h) {
+		int width = 1;
+		while (st.back().first <= a) {
+			ans += st.back().second * (a - st.back().first);
+			width += st.back().second;
+			st.pop_back();
 		}
-		else {
-			a--;
-			b++;
-		}
+
+		st.push_back(make_pair(a, width));
 	}
-	//printf("N: %d %d\n", a, b);
-	return make_pair(a, b);
+
+	return ans;
+}
+int solveQuadratic(vector<int> h) {
+	reverse(h.begin(), h.end());
+	int ans = 0;
+	while (!h.empty()) {
+		// Find the highest place
+		// In case of a tie, choose the leftmost one
+		int p = 0;
+		for (int i=1; i<h.size(); i++)
+			if (h[p] < h[i])
+				p = i;
+
+		for (int i=p+1; i<h.size(); i++) {
+			ans += h[p] - h[i];
+			assert(0 <= h[p] - h[i]);
+		}
+
+		h.resize(p);
+	}
+	return ans;
+}
+int solve(vector<int> h) {
+	reverse(h.begin(), h.end());
+
+	int ans = 0;
+	int maxval = -123;
+	for (int a : h) {
+		if (maxval < a)
+			maxval = a;
+		else
+			ans += maxval - a;
+	}
+
+	return ans;
 }
 
 void createData(string filename) {
-	int N = 1 + rand()%1000;
-	assert(1 <= N && N <= 1000);
+	static int H, W;
+	static int h[503];
 
-	assert(solve1(N) == solveN(N));
-	int a = solve1(N).first;
-	int b = solve1(N).second;
+	H = rand() % 500 + 1;
+	W = rand() % 500 + 1;
+	assert(1 <= H && H <= 500);
+	assert(1 <= W && W <= 500);
+	for (int i=1; i<=W; i++) {
+		h[i] = rand() % (H + 1);
+		assert(0 <= h[i] && h[i] <= H);
+	}
+
+	vector<int> pos;
+	int maxval = -123;
+	for (int i=1; i<=W; i++) {
+		if (maxval < h[i]) {
+			maxval = h[i];
+			pos.clear();
+			pos.push_back(i);
+		}
+		else if (maxval == h[i]) {
+			pos.push_back(i);
+		}
+	}
+	int L = pos.front();
+	int R = pos.back();
+
+	int ans = 0;
+	for (int i=L; i<=R; i++) {
+		assert(0 <= maxval - h[i]);
+		ans += maxval - h[i];
+	}
+
+	vector<int> left;
+	for (int i=L-1; i>=1; i--) left.push_back(h[i]);
+	vector<int> right;
+	for (int i=R+1; i<=W; i++) right.push_back(h[i]);
+	ans += solveLinear(left) + solveLinear(right);
+
+	assert(solveLinear(left) == solveQuadratic(left));
+	assert(solveLinear(left) == solve(left));
+	assert(solveLinear(right) == solveQuadratic(right));
+	assert(solveLinear(right) == solve(right));
 
 
+/*
 	FILE* in = fopen((filename + ".in").data(), "w");
-	fprintf(in, "%d\n", N);
+	fprintf(in, "%d %d\n", H, W);
+	for (int i=1; i<=W; i++) fprintf(in, "%d ", h[i]);
+	fprintf(in, "\n");
 
 	FILE* out = fopen((filename + ".out").data(), "w");
-	fprintf(out, "%d %d\n", a, b);
-
-	printf("%d: %d %d\n", N, a, b);
+	fprintf(out, "%d\n", ans);
+	*/
 }
 
 
@@ -64,8 +129,10 @@ int main() {
 		char tmp[123];
 		itoa(i, tmp, 10);
 		createData(tmp);
-		printf("created data %d\n", i);
+		printf("data %d created!\n", i);
 	}
+
 
 	return 0;
 }
+
