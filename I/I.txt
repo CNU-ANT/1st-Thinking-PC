@@ -25,8 +25,8 @@ PROBRAIN, GROW, ARGOS, ADMIN, ANT, MOTION, SPG, COMON, ALMIGHTY
 각 동아리원들이 문제를 푼 개수를 K라 할 때 (1 ≤ K ≤ 1000) 이다.
 
 출력:
-PROBRAIN, GROW, ARGOS, ADMIN, ANT, MOTION, SPG, COMON, ALMIGHTY
-중 대표로 선발되는 동아리 회장이 속한 동아리 이름을 대문자로 출력한다.
+PROBRAIN, GROW, ARGOS, ADMIN, ANT, MOTION, SPG, COMON, ALMIGHTY중 
+동문 커뮤니티 관리자로 선발되는 후보가 소속한 동아리 이름을 대문자로 출력한다.
 
 예제 입력:
 5
