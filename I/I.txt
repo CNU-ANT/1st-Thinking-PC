@@ -26,7 +26,7 @@ PROBRAIN, GROW, ARGOS, ADMIN, ANT, MOTION, SPG, COMON, ALMIGHTY
 
 출력:
 PROBRAIN, GROW, ARGOS, ADMIN, ANT, MOTION, SPG, COMON, ALMIGHTY중 
-동문 커뮤니티 관리자로 선발되는 후보가 소속한 동아리 이름을 대문자로 출력한다.
+동문 커뮤니티 관리자로 선발되는 후보가 소속한 동아리의 이름을 대문자로 출력한다.
 
 예제 입력:
 5
