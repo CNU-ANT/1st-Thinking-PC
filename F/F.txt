@@ -23,7 +23,7 @@ Brute Force, Linear Regression, Simulation, Mathematics
 입력:
 첫 번째 줄에는 데이터의 수 N이 주어진다. (2 ≤ N ≤ 100)
 두 번째 줄부터 N+1 번째 줄까지, 각 줄에는 i번 학생의 공부시간 x_i와 시험점수 y_i가 순서대로 주어진다. 
-(1 ≤ x_i, y_i ≤ 1000, y_i와 y_i는 정수)
+(1 ≤ x_i, y_i ≤ 1000, x_i와 y_i는 정수)
 
 출력:
 RSS가 최소인 a와 b를 한 줄에 공백으로 구분하여 출력하여라. 
