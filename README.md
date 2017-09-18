@@ -1,1 +1,1 @@
-![Alt Text](https://github.com/ISKU/ANT/blob/master/A/img/A1.png)
+2017년 9월 17일에 진행된 충남대학교 생각하는 프로그래밍 대회에서 사용되었던 문제의 디스크립션, 솔루션 슬라이드, 솔루션 코드, 입/출력 데이터, etc.
