@@ -1,4 +1,4 @@
-![Alt Text](https://github.com/ISKU/ANT/blob/master/A/img/A1.png)
+![Alt Text](https://github.com/CNU-ANT/1st-Thinking-PC/blob/master/A/img/A1.png)
 
 ----------
 
