@@ -1,1 +1,13 @@
-2017년 9월 17일에 진행된 충남대학교 생각하는 프로그래밍 대회에서 사용되었던 문제의 디스크립션, 솔루션 슬라이드, 솔루션 코드, 입/출력 데이터, etc.
+![Alt Text](https://github.com/ISKU/ANT/blob/master/A/img/A1.png)
+
+----------
+
+**제 1회 생각하는 프로그래밍 대회**
+
+- 진행: 서영학([inspire12](https://acmicpc.net/user/inspire12))
+- 문제: 김민호([isku](https://acmicpc.net/user/isku)), 임동현([amok]([isku](https://acmicpc.net/user/amok)))
+- 운영진: 임진수, 정윤수, 김정선, 김주성
+
+> 충남대학교 컴퓨터공학과 동아리 A.N.T
+> 국방ICT융합인력양성사업단
+> [Startlink](https://startlink.io/)
