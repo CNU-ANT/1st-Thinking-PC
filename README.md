@@ -8,7 +8,7 @@
 - 문제: 김민호([isku](https://acmicpc.net/user/isku)), 임동현([amok](https://acmicpc.net/user/amok))
 - 운영진: 임진수, 정윤수, 김정선, 김주성
 <br>
-:bulb: [Problems](https://www.acmicpc.net/category/detail/1756)@BOJ
+:bulb: Baekjoon Online Judge: [Problems](https://www.acmicpc.net/category/detail/1756)
 <br>
 
 ----------
