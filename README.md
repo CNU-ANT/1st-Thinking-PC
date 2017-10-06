@@ -13,11 +13,11 @@
 > - 최우수상: BFS로취업준비중(조윤재, 이정현)
 > - 우수상: 김장(김승태, 김다은, 장은정)
 > - 특별상: 재형이의 파트너들 하자(손재형, 이강민, 황태욱)
-> - 노력상: 냥고리즘(김윤태, 김낙현, 이병만)
-> [Score Board](https://www.acmicpc.net/contest/board/247)
+> - : Cola(강천성, 최현영)
+> - 노력상: 냥고리즘(김윤태, 김낙현, 이병만) 
 <br>
 
-:bulb: Baekjoon Online Judge: [Problems](https://www.acmicpc.net/category/detail/1756)
+:bulb: Baekjoon Online Judge: [Score Board](https://www.acmicpc.net/contest/board/247), [Problems](https://www.acmicpc.net/category/detail/1756)
 
 ----------
 
