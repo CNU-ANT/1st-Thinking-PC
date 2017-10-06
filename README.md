@@ -8,12 +8,13 @@
 - 문제: 김민호([isku](https://acmicpc.net/user/isku)), 임동현([amok](https://acmicpc.net/user/amok))
 - 운영진: 임진수, 정윤수, 김정선, 김주성
 <br>
+
 > - 대상: 삼달회(신하람, 정석하, 권오윤)
 > - 최우수상: BFS로취업준비중(조윤재, 이정현)
 > - 우수상: 김장(김승태, 김다은, 장은정)
 > - 특별상: 재형이의 파트너들 하자(손재형, 이강민, 황태욱)
 > - 노력상: 냥고리즘(김윤태, 김낙현, 이병만)
-> [**Score Board**](https://www.acmicpc.net/contest/board/247)
+> [Score Board](https://www.acmicpc.net/contest/board/247)
 <br>
 
 :bulb: Baekjoon Online Judge: [Problems](https://www.acmicpc.net/category/detail/1756)
